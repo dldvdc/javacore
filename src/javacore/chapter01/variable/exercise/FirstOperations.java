@@ -3,14 +3,14 @@ package javacore.chapter01.variable.exercise;
 public class FirstOperations {
     public static void main(String[] args) {
 
-        System.out.println("N°1 ---------");
+        System.out.println("\n ------------------- Section N°1 -------------------\n");
 
         int a = 53;
         int b = 5;
 
         int sum = a + b;
 
-        int substraction = a - b;
+        int subtraction = a - b;
 
         int multiplication = a * b;
 
@@ -18,18 +18,18 @@ public class FirstOperations {
         int reste = a % b;
 
         System.out.println(sum);
-        System.out.println(substraction);
+        System.out.println(subtraction);
         System.out.println(multiplication);
         System.out.println(division);
 
         System.out.println("La somme de " + a + " et " + b + " est égale à " + sum);
-        System.out.println("La différence de " + a + " et " + b + " est égale à " + substraction);
+        System.out.println("La différence de " + a + " et " + b + " est égale à " + subtraction);
         System.out.println("La multiplication de " + a + " par " + b + " est égale à " + multiplication);
         System.out.println("La division de " + a + " par " + b + " est égale à " + division + ", il reste " + reste);
 
 
 
-        System.out.println("N°2 ---------");
+        System.out.println("\n ------------------- Section N°2 -------------------\n");
 
         int c = 8;
         int d = 13;
@@ -51,7 +51,7 @@ public class FirstOperations {
         System.out.println(d);
 
 
-        System.out.println("N°3 ---------");
+        System.out.println("\n ------------------- Section N°3 -------------------\n");
 
         int e = 1 * 5 + 2;
         // 1 * 5 = 5
@@ -75,9 +75,6 @@ public class FirstOperations {
         // 9 - 1 = 8
 
         System.out.println(g);
-
-
-
 
     }
 }

@@ -3,7 +3,8 @@ package javacore.chapter01.variable.practice;
 public class PracticeBinary {
     public static void main(String[] args) {
 
-        int n = 1400;
+        // Calcul de la valeur binaire à partir de la valeur décimal (8bit)
+        int n = 1141;
         int x = n;
 
         int b1 = n % 2;
@@ -28,10 +29,12 @@ public class PracticeBinary {
         n /= 2;
 
         int b8 = n % 2;
-        n /= 2;
+
 
 
         System.out.print("Représentation binaire de la valeur decimale " + x + " = " + b8 + b7 + b6 + b5 + b4 + b3 + b2 + b1);
+
+
 
     }
 }

@@ -9,7 +9,7 @@ public class VariablesPermutation {
         System.out.println("b = " + b);
 
         //2
-        System.out.println("\nPermutation");
+        System.out.println("\nPermutation\n");
         int c = a;
         a = b;
         b = c;
