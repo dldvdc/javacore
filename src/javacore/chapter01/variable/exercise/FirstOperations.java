@@ -5,7 +5,7 @@ public class FirstOperations {
 
         System.out.println("N°1 ---------");
 
-        int a = 3;
+        int a = 53;
         int b = 5;
 
         int sum = a + b;

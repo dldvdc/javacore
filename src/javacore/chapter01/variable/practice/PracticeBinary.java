@@ -30,7 +30,6 @@ public class PracticeBinary {
         int b8 = n % 2;
         n /= 2;
 
-        System.out.println(((Object) b8).getClass().getSimpleName());
 
         System.out.print("Représentation binaire de la valeur decimale " + x + " = " + b8 + b7 + b6 + b5 + b4 + b3 + b2 + b1);
 
