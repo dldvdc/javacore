@@ -4,18 +4,17 @@ public class CoinChangerV1 {
     public static void main(String[] args) {
 
 
-        // Données de la Transaction
+        // Données de la transaction
 
-        int totalBill = 58;
-        int amountPaid = 200;
-
+        int totalBill = 39;
+        int amountPaid = 100;
         int amountDue = amountPaid - totalBill;
         System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
 
         System.out.println("Le montant à vous rendre est de " + amountDue + "€\n");
 
 
-        // Supports Monétaires du Distributeur:
+        // Supports monétaires du distributeur:
 
         int billsOf50 = 0;
         int billsOf20 = 0;
@@ -46,6 +45,9 @@ public class CoinChangerV1 {
             coinsOf1 = amountDue / 1;
             amountDue -= coinsOf1 * 1;
         }
+
+
+        // Processus de distribution
 
         System.out.println("--- Le distributeur vous rend :\n");
 
