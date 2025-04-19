@@ -6,9 +6,9 @@ public class CoinChangerV1 {
 
         // Données de la transaction
 
-        int totalBill = 39;
+        int totalBill  = 39;
         int amountPaid = 100;
-        int amountDue = amountPaid - totalBill;
+        int amountDue  = amountPaid - totalBill;
         System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
 
         System.out.println("Le montant à vous rendre est de " + amountDue + "€\n");
@@ -19,8 +19,8 @@ public class CoinChangerV1 {
         int billsOf50 = 0;
         int billsOf20 = 0;
         int billsOf10 = 0;
-        int coinsOf2 = 0;
-        int coinsOf1 = 0;
+        int coinsOf2  = 0;
+        int coinsOf1  = 0;
 
 
         // Calculs par support monétaire
