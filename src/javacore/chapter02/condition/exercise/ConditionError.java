@@ -21,7 +21,9 @@ public class ConditionError {
         else if(age < 60) {
             System.out.println("Vous êtes un adulte.");
         }
-        else if(age >= 60 && age < 100) {
+
+        // Idem pour ce bloc, autant le simplifier car la fourchette recherchée est précisée par le bas, par le bloc de code précédent, et par le haut par la condition
+        else if(age < 100) {
             System.out.println("Vous n'êtes plus tout jeune.");
         }
         else {
