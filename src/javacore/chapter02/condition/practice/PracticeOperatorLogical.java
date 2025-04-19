@@ -60,9 +60,5 @@ public class PracticeOperatorLogical {
                 System.out.println("Réservation impossible, ce vol est VIP");
             }
         }
-
-
-
     }
-
 }
