@@ -6,6 +6,8 @@ public class FullPyramid {
 
         int numberOfRows = 12;
 
+        char pyramidChar = '*';
+
         for ( int y = 0 ; y < numberOfRows ; y++) {
 
             for (int space = 0; space < numberOfRows - y ; space++) {
@@ -13,7 +15,7 @@ public class FullPyramid {
             }
 
             for (int star = 0; star < (y * 2 + 1); star++) {
-                System.out.print("*");
+                System.out.print(pyramidChar);
             }
 
             System.out.println();
