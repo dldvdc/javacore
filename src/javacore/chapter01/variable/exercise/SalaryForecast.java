@@ -4,7 +4,9 @@ public class SalaryForecast {
 
     public static void main(String[] args) {
 
+
         // Données relatives au salarié :
+
         String jobTitle = "Développeur";
         boolean isExecutive = true;
         int hourlyRate = 25;
@@ -13,9 +15,12 @@ public class SalaryForecast {
         byte workingWeeksPerMonth = 4;
         byte workingMonthsPerYear = 12;
 
+
         // Impots et Taxes :
+
         float socialContributionsRate = 25f / 100;
         float incomeTaxRate = 10.5f / 100;
+
 
         // Calcul du salaire brut journalier :
         float dailyGrossSalary = dailyHoursWorked * hourlyRate;
@@ -41,7 +46,10 @@ public class SalaryForecast {
         // Calcul du salaire net annuel, après impôt sur le revenu :
         float yearlyNetAfterTax = monthlyNetAfterTax * workingMonthsPerYear;
 
-        // Synthèse :
+
+
+        // Affichage de la Synthèse :
+
         System.out.println("Synthese Salariale : " + jobTitle + " (Cadre=" + isExecutive + ") :");
         System.out.println("Salaire brut journalier : " + dailyGrossSalary + "€.");
         System.out.println("Salaire brut hebdomadaire : " + weeklyGrossSalary + "€.");
@@ -51,5 +59,7 @@ public class SalaryForecast {
         System.out.println("Salaire net imposable annuel : " + yearlyNetSalary + "€.");
         System.out.println("Salaire net mensuel, après impôt sur le revenu : " + monthlyNetAfterTax + "€.");
         System.out.println("Salaire net annuel, après impôt sur le revenu : " + yearlyNetAfterTax + "€.");
+
     }
+
 }

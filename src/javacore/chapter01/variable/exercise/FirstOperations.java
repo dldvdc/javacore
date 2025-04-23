@@ -1,6 +1,7 @@
 package javacore.chapter01.variable.exercise;
 
 public class FirstOperations {
+
     public static void main(String[] args) {
 
         System.out.println("\n ------------------- Section N°1 -------------------\n");
@@ -54,6 +55,7 @@ public class FirstOperations {
         System.out.println("\n ------------------- Section N°3 -------------------\n");
 
         int e = 1 * 5 + 2;
+
         // 1 * 5 = 5
         // 5 + 2 = 7
 
@@ -61,6 +63,7 @@ public class FirstOperations {
 
 
         int f = 1 * (5 + 2);
+
         // 5 + 2 = 7
         // 1 * 7 = 7
 
@@ -68,6 +71,7 @@ public class FirstOperations {
 
 
         int g = ((2 * 5) - 2 / (4 - 2)) - 1;
+
         // 2 * 5 = 10
         // 4 - 2 = 2
         // 2 / 2 = 1
@@ -77,4 +81,5 @@ public class FirstOperations {
         System.out.println(g);
 
     }
+
 }

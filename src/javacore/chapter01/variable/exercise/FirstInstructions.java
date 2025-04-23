@@ -1,35 +1,39 @@
 package javacore.chapter01.variable.exercise;
 
 public class FirstInstructions {
+
     public static void main(String[] args) {
-        //1
+
+        // 1
         int age = 37;
 
-        //2
+        // 2
         System.out.println(age);
 
-        //3
+        // 3
         System.out.println("J'ai " + age + " ans.");
 
-        //4
+        // 4
         String displayAge = "J'ai " + age + " ans.";
 
-        //5
+        // 5
         System.out.println(displayAge);
 
-        //6
+        // 6
         String firstName = "Damien";
 
-        //7
+        // 7
         System.out.println(firstName);
 
-        //8
+        // 8
         String displayFirstName = "Je m'appelle " + firstName + ". ";
 
-        //9
+        // 9
         System.out.println(displayFirstName + displayAge);
 
-        //10
+        // 10
         System.out.println("Je m'appelle " + firstName + ". J'ai " + age + " ans.");
+
     }
+
 }
