@@ -12,7 +12,7 @@ public class ScholarshipEligibility {
         boolean hasExtracurricular = true;
 
 
-        // Donnée globales :
+        // Données globales :
 
         double minIncome = 40000;
         double maxIncome = 60000;
