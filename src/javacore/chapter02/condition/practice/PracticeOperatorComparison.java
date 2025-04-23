@@ -1,6 +1,7 @@
 package javacore.chapter02.condition.practice;
 
 public class PracticeOperatorComparison {
+
     public static void main(String[] args) {
 
         int a = 30;
@@ -25,4 +26,5 @@ public class PracticeOperatorComparison {
         System.out.println("Est-ce-que " + a + " est plus grand ou egal a " + b + " ? : " + isGreaterThanOrEqual);
 
     }
+
 }

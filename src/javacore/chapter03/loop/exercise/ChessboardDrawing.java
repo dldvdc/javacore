@@ -4,12 +4,18 @@ public class ChessboardDrawing {
 
     public static void main(String[] args) {
 
+
+        // Composantes du damier
+
         char whiteChar = '.';
         char blackChar = '#';
 
         int chessboardSize = 8;
 
         boolean blackTurn = true;
+
+
+        // Affichage du damier
 
         for ( int y = 0 ; y < chessboardSize ; y++) {
 

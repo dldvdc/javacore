@@ -1,6 +1,7 @@
 package javacore.chapter02.condition.exercise;
 
 public class ObfuscatedCodeV1 {
+
     public static void main(String[] args) {
 
         int vehiculeType = 1; // Type de véhicule (1 = Voiture, 2 = 4x4, 3 = Camion)
@@ -28,4 +29,5 @@ public class ObfuscatedCodeV1 {
         System.out.println("Ce trajet vous coûte : " +  price + "€");
 
     }
+
 }

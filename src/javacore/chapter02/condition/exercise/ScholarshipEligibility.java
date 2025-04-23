@@ -1,10 +1,11 @@
 package javacore.chapter02.condition.exercise;
 
 public class ScholarshipEligibility {
+
     public static void main(String[] args) {
 
 
-        // Donnée de l'étudiant :
+        // Données de l'étudiant :
 
         float studentGpa = 4F;
         double householdIncome = 25000;
@@ -18,8 +19,8 @@ public class ScholarshipEligibility {
 
         float minGpa = 3.5F;
 
-        // Calcul d'éligibilité
 
+        // Calcul d'éligibilité
 
         boolean hasBasicEligibility = studentGpa >= minGpa && hasExtracurricular;
 
@@ -37,4 +38,5 @@ public class ScholarshipEligibility {
         }
 
     }
+
 }

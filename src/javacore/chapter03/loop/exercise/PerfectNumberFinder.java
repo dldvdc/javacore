@@ -6,10 +6,13 @@ public class PerfectNumberFinder {
 
 
         // 1
+
         long start = 1L;
         long end = 33550336L;
 
+
         // 2
+
         for (long number = start ; number <= end ; number++ ) {
 
             long divisorSum = 0L;
@@ -28,6 +31,9 @@ public class PerfectNumberFinder {
                 System.out.println(number + " est un nombre parfait");
 
             }
+
         }
+
     }
+
 }

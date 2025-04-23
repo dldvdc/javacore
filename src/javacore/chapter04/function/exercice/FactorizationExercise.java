@@ -2,7 +2,6 @@ package javacore.chapter04.function.exercice;
 
 public class FactorizationExercise {
 
-
     public static void main(String[] args) {
 
         // Afficher les nombres de 1 à 5

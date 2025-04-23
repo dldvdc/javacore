@@ -33,5 +33,7 @@ public class MaxOfThree {
                 System.out.println("c est le plus grand");
             }
         }
+
     }
+
 }

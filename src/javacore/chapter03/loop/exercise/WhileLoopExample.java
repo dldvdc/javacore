@@ -7,10 +7,8 @@ public class WhileLoopExample {
         int loopCounter = 1;
 
         while ( loopCounter <= 10 ) {
-
             System.out.println("Hello World");
             loopCounter++;
-
         }
 
     }

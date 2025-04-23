@@ -4,9 +4,14 @@ public class FullPyramid {
 
     public static void main(String[] args) {
 
-        int numberOfRows = 12;
 
+        // Composants de la pyramide
+
+        int numberOfRows = 12;
         char pyramidChar = '*';
+
+
+        // Affichage de la pyramide
 
         for ( int y = 0 ; y < numberOfRows ; y++) {
 

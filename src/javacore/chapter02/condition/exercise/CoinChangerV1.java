@@ -1,6 +1,7 @@
 package javacore.chapter02.condition.exercise;
 
 public class CoinChangerV1 {
+
     public static void main(String[] args) {
 
 
@@ -9,8 +10,8 @@ public class CoinChangerV1 {
         int totalBill  = 39;
         int amountPaid = 100;
         int amountDue  = amountPaid - totalBill;
-        System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
 
+        System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
         System.out.println("Le montant à vous rendre est de " + amountDue + "€\n");
 
 
@@ -23,7 +24,7 @@ public class CoinChangerV1 {
         int coinsOf1  = 0;
 
 
-        // Calculs par support monétaire
+        // Calcul par support monétaire
 
         if (amountDue >= 50) {
             billsOf50 = amountDue / 50;
@@ -54,18 +55,23 @@ public class CoinChangerV1 {
         if ( billsOf50 > 0 ) {
             System.out.println(billsOf50 + " billet(s) de 50€");
         }
+
         if ( billsOf20 > 0 ) {
             System.out.println(billsOf20 + " billet(s) de 20€");
         }
+
         if ( billsOf10 > 0 ) {
             System.out.println(billsOf10 + " billet(s) de 10€");
         }
+
         if ( coinsOf2 > 0 ) {
         System.out.println(coinsOf2 + " pièce(s) de 2€");
         }
+
         if ( coinsOf1 > 0 ) {
             System.out.println(coinsOf1 + " pièce(s) de 1€");
         }
 
     }
+
 }

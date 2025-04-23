@@ -27,7 +27,6 @@ public class PracticeOperatorLogical {
         boolean notNotFalse = !!false; // false
 
 
-
         boolean isLoggedIn = false; // L'utilisateur est-il connecté
 
         int age = 15; // Age de l'utilisateur
@@ -39,24 +38,23 @@ public class PracticeOperatorLogical {
         boolean isVipFlight = false; // Est-ce que le vol est réservé aux VIP
 
 
-        if ( isLoggedIn && age >= 18 && seatsAvailable > 0 && (!isVipFlight || isPremiumMember)) {
+        if ( isLoggedIn && age >= 18 && seatsAvailable > 0 && (!isVipFlight || isPremiumMember )) {
 
             System.out.println("Résevation effectuée avec succès");
             seatsAvailable--;
 
-        }
-        else {
+        } else {
 
-            if (!isLoggedIn) {
+            if ( !isLoggedIn ) {
                 System.out.println("Réservation impossible, vous êtes déconnecté");
             }
-            else if (age < 18) {
+            else if ( age < 18 ) {
                 System.out.println("Réservation impossible, vous êtes mineur");
             }
             else if ( seatsAvailable < 1 ) {
                 System.out.println("Réservation impossible, ce vol est complet");
             }
-            else if ( isVipFlight && !isPremiumMember) {
+            else if ( isVipFlight && !isPremiumMember ) {
                 System.out.println("Réservation impossible, ce vol est VIP");
             }
         }

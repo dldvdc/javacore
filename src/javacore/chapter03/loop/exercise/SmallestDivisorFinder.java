@@ -9,10 +9,9 @@ public class SmallestDivisorFinder {
 
         int divisor = 2;
 
+
         while ( number % divisor != 0 ) {
-
             divisor++;
-
         }
 
         System.out.println("\nLe plus petit diviseur de " + number + " est " + divisor);

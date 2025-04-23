@@ -11,6 +11,7 @@ public class FactorialCalculator {
         while (number >= 1) {
 
             // System.out.print(number + " x ");
+
             result *= number;
 
             number--;
@@ -20,9 +21,10 @@ public class FactorialCalculator {
         // System.out.print(" = " + result);
 
         if (result < 0) {
-            System.out.println("La valeur obtenue est trop grande pour être stockée dans un type int...");
-        }
 
+            System.out.println("La valeur obtenue est trop grande pour être stockée dans un type int...");
+
+        }
         else {
 
             if (result == 0){
@@ -32,6 +34,7 @@ public class FactorialCalculator {
             System.out.println("La factorielle de " + numberInit + " est " + result);
 
         }
+
     }
 
 }

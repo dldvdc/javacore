@@ -1,6 +1,7 @@
 package javacore.chapter02.condition.exercise;
 
 public class ConditionError {
+
     public static void main(String[] args) {
 
         int age = 80;
@@ -31,4 +32,5 @@ public class ConditionError {
         }
 
     }
+
 }

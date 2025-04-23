@@ -53,7 +53,6 @@ public class ForLoopExample {
 
         System.out.println("La factorielle de " + number + " est " + result);
 
-
     }
 
 }

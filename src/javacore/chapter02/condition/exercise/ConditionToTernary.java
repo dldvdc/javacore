@@ -7,6 +7,7 @@ public class ConditionToTernary {
         /**
          * Le code doit s'adapter aux différentes valeurs que vous mettrez à la variable age.
          */
+
         Integer age = 12;
 
         Integer pourcentageReduction = 0;

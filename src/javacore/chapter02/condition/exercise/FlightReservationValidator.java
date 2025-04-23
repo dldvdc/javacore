@@ -1,6 +1,7 @@
 package javacore.chapter02.condition.exercise;
 
 public class FlightReservationValidator {
+
     public static void main(String[] args) {
 
 
@@ -45,6 +46,9 @@ public class FlightReservationValidator {
             else if ( isVipFlight && !isPremiumMember) {
                 System.out.println("Réservation impossible, ce vol est VIP");
             }
+
         }
+
     }
+
 }

@@ -9,6 +9,7 @@ public class AgeValidation {
          */
 
         // Récupération de la date courante de la machine exécutant ce programme
+
         java.time.LocalDate currentDate = java.time.LocalDate.now();
 
         int currentDay   = currentDate.getDayOfMonth(); // Jour courant (entre 1 et 31)
@@ -22,7 +23,7 @@ public class AgeValidation {
          */
 
 
-        // Donnée de l'utilisateur :
+        // Données de l'utilisateur :
 
         int birthDay = 15;
         int birthMonth = 6;
@@ -30,7 +31,6 @@ public class AgeValidation {
         String birthDate = birthDay + "/" + birthMonth + "/" + birthYear;
 
         System.out.println("Vous êtes né le " + birthDate);
-
 
 
         // Calcul de l'âge de l'utilisateur :
@@ -42,7 +42,7 @@ public class AgeValidation {
         }
 
 
-        // Implémentation du calcul de la majorité (je crois qu'elle est meilleure que l'autre...)
+        // Implémentation du calcul de la majorité
 
         if ( age >= 18) {
 
@@ -66,6 +66,9 @@ public class AgeValidation {
                 yearsRemaining--;
             }
 
+
+            // Calcul du temps restant
+
             System.out.print("Il vous reste encore ");
 
             if ( yearsRemaining > 0 ) {
@@ -82,7 +85,7 @@ public class AgeValidation {
 
         }
 
-
+        // --------------------------
         // Implémentation alternative
 
         double daysAlive = (( currentDay - birthDay ) + ( currentMonth - birthMonth ) * 30.44 + (currentYear - birthYear) * 365.25);
@@ -91,9 +94,14 @@ public class AgeValidation {
 
 
         if (isMajor) {
+
             System.out.println("\nVous êtes Majeur");
+
         } else {
+
             System.out.println("\nVous n'êtes pas majeur");
+
+            // Calcul du temps restant
 
             double timeInDaysBeforeMajority = majority - daysAlive;
 
@@ -104,16 +112,21 @@ public class AgeValidation {
             int daysBeforeMajority = (int) (daysRemainingAfterYears % 30.44);
 
             System.out.print("Il vous reste à patienter encore ");
+
             if ( yearsBeforeMajority >= 1 ) {
                 System.out.print(yearsBeforeMajority + " an(s) ");
             }
+
             if ( monthsBeforeMajority >= 1) {
                 System.out.print(monthsBeforeMajority + " mois ");
             }
+
             if ( daysBeforeMajority >= 1 ) {
                 System.out.print(daysBeforeMajority + " jour(s) ");
             }
+
             System.out.println("avant d'être majeur.");
+
         }
 
     }

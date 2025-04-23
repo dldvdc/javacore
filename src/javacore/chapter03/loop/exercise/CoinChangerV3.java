@@ -4,13 +4,14 @@ public class CoinChangerV3 {
 
     public static void main(String[] args) {
 
+
         // Données de la transaction
 
         int totalBill  = 39;
         int amountPaid = 100;
         int amountDue  = amountPaid - totalBill;
-        System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
 
+        System.out.println("\nPour un total de " + totalBill + "€ vous avez donné " + amountPaid + "€");
         System.out.println("Le montant à vous rendre est de " + amountDue + "€\n");
 
 
