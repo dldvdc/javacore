@@ -17,6 +17,7 @@ public class RecursiveFunction {
             initialNumber++;
 
             displayNumbers(initialNumber, endNumber);
+
         }
 
     }
