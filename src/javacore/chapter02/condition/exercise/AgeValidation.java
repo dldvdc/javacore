@@ -105,7 +105,7 @@ public class AgeValidation {
 
             double timeInDaysBeforeMajority = majority - daysAlive;
 
-            int yearsBeforeMajority = (int) (timeInDaysBeforeMajority / 365.65);
+            int yearsBeforeMajority = (int) (timeInDaysBeforeMajority / 365.25);
             double daysRemainingAfterYears = timeInDaysBeforeMajority % 365.25;
 
             int monthsBeforeMajority = (int) (daysRemainingAfterYears / 30.44);

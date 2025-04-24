@@ -15,7 +15,7 @@ public class NumberComparison {
 
         if ( number1 > number2 ) {
             System.out.println("Le nombre " + number1 + " est le plus grand des deux nombres");
-        } else if ( number2 > number1 ) {
+        } else if ( number1 < number2 ) {
             System.out.println("Le nombre " + number2 + " est le plus grand des deux nombres");
         } else {
             System.out.println("Les deux nombres sont égaux, il n'y a donc pas de plus grand");
