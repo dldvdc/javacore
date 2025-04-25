@@ -83,6 +83,7 @@ public class CoinChangerV4 {
 
     }
 
+
     public static int updateAmountDue(int amountDue, int moneySupportValue, int moneySupportDue) {
 
         amountDue -= moneySupportDue * moneySupportValue;
@@ -90,6 +91,7 @@ public class CoinChangerV4 {
         return amountDue;
 
     }
+
 
     public static int updateMoneySupportStock(int moneySupportAvailable, int moneySupportDue, String moneySupportName) {
 
@@ -101,5 +103,3 @@ public class CoinChangerV4 {
     }
 
 }
-
-

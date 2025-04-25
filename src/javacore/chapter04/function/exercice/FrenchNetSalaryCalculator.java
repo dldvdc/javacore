@@ -119,7 +119,7 @@ public class FrenchNetSalaryCalculator {
     }
 
 
-    // 5 - Fonction d'affichage globale
+    // 5 - Fonction d'affichage de la synthèse
 
     public static void displaySalaryAndTaxInformation (double hourlyGrossSalary, double socialChargePercentage,
                                                        double taxAllowancePercentage) {

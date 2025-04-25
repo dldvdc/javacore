@@ -26,10 +26,9 @@ public class RecursiveFactorial {
     }
 
 
-
     public static long calculateFactorial(int number, long factor) {
 
-        if (factor < 0) return -1;
+        if (factor < 0) return -1; // Gestion de l'overflow pour le type long
 
         else if (number >= 1) {
 

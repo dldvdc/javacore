@@ -17,7 +17,9 @@ public class FactorizationExample {
     }
 
     public static void affichage(String message) {
+
         System.out.println(message);
+
     }
 
 }
