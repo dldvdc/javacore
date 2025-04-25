@@ -18,12 +18,12 @@ public class FunctionRefactorBasicStopwatch {
 
         while ( elapsed < finalTime ) {
 
-            Thread.sleep(1000);
-
             displayWatchTime(hours, minutes, seconds);
 
             seconds++;
             elapsed++;
+
+            Thread.sleep(1000);
 
             if ( seconds >= 60 ) {
                 minutes++;
@@ -42,14 +42,15 @@ public class FunctionRefactorBasicStopwatch {
 
     public static void displayWatchTime(int hours, int minutes, int seconds) {
 
-        String displayHours = hours < 10  ? "0" + hours  : "" + hours;
-        System.out.print(displayHours + ":");
+        System.out.print(displayTime(hours) + ":");
+        System.out.print(displayTime(minutes) + ":");
+        System.out.print(displayTime(seconds) + "\n");
 
-        String displayMinutes = minutes < 10  ? "0" + minutes  : "" + minutes;
-        System.out.print(displayMinutes + ":");
+    }
 
-        String displaySeconds = seconds < 10  ? "0" + seconds  : "" + seconds;
-        System.out.println(displaySeconds);
+    public static String displayTime(int timeUnit) {
+
+        return timeUnit < 10  ? "0" + timeUnit  : "" + timeUnit;
 
     }
 
