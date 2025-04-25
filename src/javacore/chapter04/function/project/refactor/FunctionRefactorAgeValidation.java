@@ -4,26 +4,30 @@ public class FunctionRefactorAgeValidation {
 
     public static void main(String[] args) {
 
+        displayAgeVerification(15, 6, 2013);
+
+    }
+
+
+    //  Fonction d'affichage globale
+
+    public static void displayAgeVerification(int birthDay, int birthMonth, int birthYear) {
+
 
         // Date d'aujourd'hui
 
         java.time.LocalDate currentDate = java.time.LocalDate.now();
 
-        int currentDay   = currentDate.getDayOfMonth(); // Jour courant (entre 1 et 31)
-        int currentMonth = currentDate.getMonthValue(); // Mois courant (entre 1 et 12)
-        int currentYear  = currentDate.getYear();
-
-
-        // Données de l'utilisateur :
-
-        int birthDay = 15;
-        int birthMonth = 6;
-        int birthYear = 2009;
+        final int CURRENT_DAY   = currentDate.getDayOfMonth(); // Jour courant (entre 1 et 31)
+        final int CURRENT_MONTH = currentDate.getMonthValue(); // Mois courant (entre 1 et 12)
+        final int CURRENT_YEAR  = currentDate.getYear();
 
 
         // Calcul de l'âge de l'utilisateur :
 
-        int age = getAge(currentYear, currentMonth, currentDay, birthYear, birthMonth, birthDay);
+        int age = getAge(CURRENT_YEAR, CURRENT_MONTH, CURRENT_DAY, birthYear, birthMonth, birthDay);
+
+        System.out.println("\nVous avez " + age + " ans");
 
 
         // Vérification de la majorité
@@ -32,24 +36,29 @@ public class FunctionRefactorAgeValidation {
 
         boolean isMajor = verifyMajority(majorityAge, age);
 
-
-        // Calcul du temps restant avant majorité
-
-        int daysBeforeMajority = 0;
-
         if (!isMajor) {
-            daysBeforeMajority = getDaysBeforeMajority(currentYear, currentMonth,currentDay, majorityAge, birthYear, birthMonth, birthDay);
+
+            System.out.println("Vous n'etes pas encore majeur...");
+
+            // Calcul du temps restant avant majorité
+
+            String timeBeforeMajority = getTimeBeforeMajority(CURRENT_YEAR, CURRENT_MONTH,CURRENT_DAY,
+                                                       majorityAge, birthYear, birthMonth, birthDay);
+
+            System.out.println("Mais plus que " + timeBeforeMajority + " avant de gouter aux joies de la majorite");
+
         }
 
+        else {
 
-        // Affichage de la synthèse
+            System.out.println("Vous etes majeur");
+
+        }
 
     }
 
-    // ------------------------
-    //   Fonctions de calculs
-    // ------------------------
 
+    //   Fonctions de calculs
 
     public static int getAge(int currentYear, int currentMonth, int currentDay, int birthYear, int birthMonth, int birthDay) {
 
@@ -73,17 +82,22 @@ public class FunctionRefactorAgeValidation {
     }
 
 
-    public static int getDaysBeforeMajority (int currentYear, int currentMonth, int currentDay, int majorityAge, int birthYear, int birthMonth, int birthDay) {
+    public static String getTimeBeforeMajority (int currentYear, int currentMonth, int currentDay, int majorityAge, int birthYear, int birthMonth, int birthDay) {
 
         double daysAlive = (( currentDay - birthDay ) + ( currentMonth - birthMonth ) * 30.44 + (currentYear - birthYear) * 365.25);
 
-        return (int) (majorityAge * 365.25 - daysAlive);
+        double totalDays = majorityAge * 365.25 - daysAlive;
+
+        int years = (int) (totalDays / 365.25);
+        double remainingDaysAfterYears = totalDays - years * 365.25;
+
+        int months = (int) (remainingDaysAfterYears / 30.44);
+        double remainingDaysAfterMonths = remainingDaysAfterYears - months * 30.44;
+
+        int days = (int) Math.round(remainingDaysAfterMonths);
+
+        return years + " an(s), " + months + " moi(s) et " + days + " jour(s)";
 
     }
-
-
-    // ------------------------
-    //  Fonctions d'affichage
-    // ------------------------
 
 }
