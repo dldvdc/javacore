@@ -4,21 +4,7 @@ public class PrimeNumberSearcherV3 {
 
     public static void main(String[] args) {
 
-
-        int number = 465;
-
-
-        if (isPrimeNumber(number)) {
-
-            System.out.println(number + " est un Nombre Premier !");
-
-        }
-
-        else {
-
-            System.out.println(number + " n'est un pas Nombre Premierr...");
-
-        }
+        checkIfPrimeNumber(55);
 
     }
 
@@ -35,6 +21,22 @@ public class PrimeNumberSearcherV3 {
         }
 
         return true;
+
+    }
+
+    public static void checkIfPrimeNumber(int number) {
+
+        if (isPrimeNumber(number)) {
+
+            System.out.println(number + " est un Nombre Premier !");
+
+        }
+
+        else {
+
+            System.out.println(number + " n'est un pas Nombre Premier...");
+
+        }
 
     }
 

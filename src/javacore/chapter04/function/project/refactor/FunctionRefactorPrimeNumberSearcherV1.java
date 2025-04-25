@@ -22,6 +22,8 @@ public class FunctionRefactorPrimeNumberSearcherV1 {
 
                     isPrime = false;
 
+                    break;
+
                 }
 
             }

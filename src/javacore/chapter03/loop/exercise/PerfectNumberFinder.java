@@ -13,22 +13,22 @@ public class PerfectNumberFinder {
 
         // 2
 
-        for (long number = start ; number <= end ; number++ ) {
+        for (long potentialPerfectNumber = start ; potentialPerfectNumber <= end ; potentialPerfectNumber++ ) {
 
             long divisorSum = 0L;
 
-            for ( long divisor = 1L; divisor < number; divisor++ ) {
+            for ( long divisor = 1L; divisor < potentialPerfectNumber; divisor++ ) {
 
-                if (number % divisor == 0L) {
+                if (potentialPerfectNumber % divisor == 0L) {
 
                     divisorSum += divisor;
 
                 }
             }
 
-            if ( divisorSum == number ) {
+            if ( divisorSum == potentialPerfectNumber ) {
 
-                System.out.println(number + " est un nombre parfait");
+                System.out.println(potentialPerfectNumber + " est un nombre parfait");
 
             }
 
