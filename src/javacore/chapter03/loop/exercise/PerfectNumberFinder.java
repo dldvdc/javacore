@@ -17,11 +17,11 @@ public class PerfectNumberFinder {
 
             long divisorSum = 0L;
 
-            for ( long divisor = 1L; divisor < potentialPerfectNumber; divisor++ ) {
+            for ( long potentialDivisor = 1L;  potentialDivisor < potentialPerfectNumber;  potentialDivisor++ ) {
 
-                if (potentialPerfectNumber % divisor == 0L) {
+                if (potentialPerfectNumber %  potentialDivisor == 0L) {
 
-                    divisorSum += divisor;
+                    divisorSum +=  potentialDivisor;
 
                 }
             }
