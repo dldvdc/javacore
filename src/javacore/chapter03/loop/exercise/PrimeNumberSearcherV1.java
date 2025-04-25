@@ -6,19 +6,26 @@ public class PrimeNumberSearcherV1 {
 
         int primeNumberFound = 0;
 
-        for ( int number = 1; number <= 100 && primeNumberFound <= 5; number++ ) {
+        for ( int potentialPrimeNumber = 2; potentialPrimeNumber <= 100 && primeNumberFound < 5; potentialPrimeNumber++ ) {
 
-            int divisorCount = 0;
+            boolean isPrime = true;
 
-            for ( int divisor = 2; divisor < number; divisor++ ) {
-                if (number % divisor == 0) {
-                    divisorCount++;
+            for ( int potentialDivisor = 2; potentialDivisor < potentialPrimeNumber; potentialDivisor++ ) {
+
+                if (potentialPrimeNumber % potentialDivisor == 0) {
+
+                    isPrime = false;
+
                 }
+
             }
 
-            if (divisorCount == 0) {
-                System.out.println(number + " est un nombre premier");
+            if (isPrime) {
+
+                System.out.println(potentialPrimeNumber + " est un nombre premier");
+
                 primeNumberFound++;
+
             }
 
         }
