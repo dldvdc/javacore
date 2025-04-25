@@ -7,14 +7,14 @@ public class ArmstrongNumbers {
 
         // Nombre test
 
-        int number = 153;
+        int potentialAmstrongNumber = 153;
 
 
         // Obtention de la puissance
 
         int power = 0;
 
-        for (int i = number ; i > 0; i /= 10) {
+        for (int i = potentialAmstrongNumber ; i > 0; i /= 10) {
             power++;
         }
 
@@ -23,7 +23,7 @@ public class ArmstrongNumbers {
 
         int sumOfPoweredNumber = 0;
 
-        for (int b = number ; b > 0; b /= 10) {
+        for (int b = potentialAmstrongNumber ; b > 0; b /= 10) {
 
             int isolatedNumber = b % 10;
             int poweredNumber = 1;
@@ -38,10 +38,10 @@ public class ArmstrongNumbers {
 
         // Affichage du Resultat
 
-        if ( sumOfPoweredNumber == number ) {
-            System.out.println(number + " est un nombre narcissique !");
+        if ( sumOfPoweredNumber == potentialAmstrongNumber ) {
+            System.out.println(potentialAmstrongNumber + " est un nombre narcissique !");
         } else {
-            System.out.println(number + " n'est pas un nombre narcissique.");
+            System.out.println(potentialAmstrongNumber + " n'est pas un nombre narcissique.");
         }
 
     }
