@@ -18,9 +18,9 @@ public class FunctionRefactorBasicStopwatch {
 
         while ( elapsed < finalTime ) {
 
-            displayWatchTime(hours, minutes, seconds);
-
             Thread.sleep(1000);
+
+            displayWatchTime(hours, minutes, seconds);
 
             seconds++;
             elapsed++;
@@ -28,11 +28,12 @@ public class FunctionRefactorBasicStopwatch {
             if ( seconds >= 60 ) {
                 minutes++;
                 seconds = 0;
-            }
 
-            if ( minutes >= 60 ) {
-                hours++;
-                minutes = 0;
+                if ( minutes >= 60 ) {
+                    hours++;
+                    minutes = 0;
+                }
+
             }
 
         }

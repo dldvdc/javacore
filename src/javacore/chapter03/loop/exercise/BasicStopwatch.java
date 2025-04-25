@@ -10,17 +10,19 @@ public class BasicStopwatch {
 
         int finalTime = 600;
 
+        Thread.sleep(1000);
 
         for ( int seconds = 0 ; seconds < finalTime ; seconds++ ) {
 
             if ( seconds >= 60 ) {
                 minutes++;
                 seconds = 0;
-            }
 
-            if ( minutes >= 60 ) {
-                hours++;
-                minutes = 0;
+                if ( minutes >= 60 ) {
+                    hours++;
+                    minutes = 0;
+                }
+
             }
 
             String displayHours = hours < 10  ? "0" + hours  : "" + hours;
@@ -31,8 +33,6 @@ public class BasicStopwatch {
 
             String displaySeconds = seconds < 10  ? "0" + seconds  : "" + seconds;
             System.out.println(displaySeconds);
-
-            Thread.sleep(1000);
 
         }
 
