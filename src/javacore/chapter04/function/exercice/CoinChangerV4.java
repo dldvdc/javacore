@@ -8,7 +8,6 @@ public class CoinChangerV4 {
 
     }
 
-
     public static void makeTransaction(int totalBill, int amountPaid) {
 
         // Supports monétaires disponibles:

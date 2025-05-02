@@ -16,14 +16,13 @@ public class FunctionRefactorBasicStopwatch {
 
         int elapsed = 0;
 
+        displayWatchTime(hours, minutes, seconds);
+
         while ( elapsed < finalTime ) {
 
-            displayWatchTime(hours, minutes, seconds);
+            Thread.sleep(1000);
 
             seconds++;
-            elapsed++;
-
-            Thread.sleep(1000);
 
             if ( seconds >= 60 ) {
                 minutes++;
@@ -35,6 +34,10 @@ public class FunctionRefactorBasicStopwatch {
                 }
 
             }
+
+            elapsed++;
+
+            displayWatchTime(hours, minutes, seconds);
 
         }
 

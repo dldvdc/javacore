@@ -10,9 +10,9 @@ public class BasicStopwatch {
 
         int finalTime = 600;
 
-        Thread.sleep(1000);
-
         for ( int seconds = 0 ; seconds < finalTime ; seconds++ ) {
+
+            Thread.sleep(1000);
 
             if ( seconds >= 60 ) {
                 minutes++;

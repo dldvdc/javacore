@@ -13,26 +13,24 @@ public class RecursiveFibonacci {
 
         System.out.print(" \n\nLes " + numberOfTerms + " premiers nombres de la suite de Fibonacci sont : ");
 
-        generateFibonacciSuite(0L, 1L, numberOfTerms);
+        recursiveFibonacciSuite(0L, 1L, numberOfTerms);
 
         System.out.println("\n");
 
     }
 
 
-    public static void generateFibonacciSuite(long a, long b, int remaining) {
+    public static void recursiveFibonacciSuite(long a, long b, int remaining) {
 
-        if (remaining == 0) {
-
+        if (remaining <= 0) {
             return;
-
         }
 
         System.out.print( a + " | " );
 
         remaining--;
 
-        generateFibonacciSuite( b, a + b , remaining );
+        recursiveFibonacciSuite( b, a + b , remaining );
 
     }
 

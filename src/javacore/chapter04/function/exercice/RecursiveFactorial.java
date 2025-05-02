@@ -11,12 +11,11 @@ public class RecursiveFactorial {
 
     public static void displayFactorial(int number) {
 
-        long factorial = calculateFactorial(number, 1L);
+        long factorial = recursiveFactorial(number, 1L);
 
         if (factorial == -1) {
 
             System.out.println("\nLa valeur de la factorielle de " + number + " est trop grande pour être stockée dans un type long...\n");
-
             return;
 
         }
@@ -26,7 +25,7 @@ public class RecursiveFactorial {
     }
 
 
-    public static long calculateFactorial(int number, long factor) {
+    public static long recursiveFactorial(int number, long factor) {
 
         if (factor < 0) return -1; // Gestion de l'overflow pour le type long
 
@@ -35,7 +34,7 @@ public class RecursiveFactorial {
             factor *= number;
             number--;
 
-            factor = calculateFactorial( number , factor );
+            factor = recursiveFactorial( number , factor );
 
         }
 

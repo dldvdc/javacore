@@ -12,31 +12,32 @@ public class FunctionRefactorPrimeNumberSearcherV1 {
 
         int primeNumberFound = 0;
 
-        for ( int potentialPrimeNumber = 2; potentialPrimeNumber <= searchLimitNumber && primeNumberFound < 5; potentialPrimeNumber++ ) {
+        for (int potentialPrimeNumber = 2; potentialPrimeNumber <= searchLimitNumber && primeNumberFound < 5; potentialPrimeNumber++) {
 
-            boolean isPrime = true;
-
-            for (int potentialDivisor = 2; potentialDivisor < potentialPrimeNumber; potentialDivisor++) {
-
-                if (potentialPrimeNumber % potentialDivisor == 0) {
-
-                    isPrime = false;
-
-                    break;
-
-                }
-
-            }
+            boolean isPrime = isPrimeNumber(potentialPrimeNumber);
 
             if (isPrime) {
 
                 System.out.println(potentialPrimeNumber + " est un nombre premier");
-
                 primeNumberFound++;
 
             }
 
         }
+
+    }
+
+    public static boolean isPrimeNumber(int potentialPrimeNumber) {
+
+        for (int potentialDivisor = 2; potentialDivisor < potentialPrimeNumber; potentialDivisor++) {
+
+            if (potentialPrimeNumber % potentialDivisor == 0) {
+                return false;
+            }
+
+        }
+
+        return true;
 
     }
 

@@ -4,7 +4,16 @@ public class FunctionRefactorArmstrongNumbers {
 
     public static void main(String[] args) {
 
-            checkIfAmstrongNumber(152);
+            int number = 152;
+
+            boolean isAmstrongNumber = isAmstrongNumber(number);
+
+            if (isAmstrongNumber) {
+                System.out.println(number + " est un nombre narcissique !");
+            }
+            else {
+                System.out.println(number + " n'est pas un nombre narcissique.");
+            }
 
     }
 
@@ -44,18 +53,13 @@ public class FunctionRefactorArmstrongNumbers {
     }
 
 
-    public static boolean checkIfAmstrongNumber(int potentialAmstrongNumber) {
+    public static boolean isAmstrongNumber(int potentialAmstrongNumber) {
 
-        int sumOfPoweredNumber = sumPoweredNumbers(potentialAmstrongNumber, getNumberOfDigits(potentialAmstrongNumber));
+        int numberOfDigit = getNumberOfDigits(potentialAmstrongNumber);
 
-        if ( sumOfPoweredNumber == potentialAmstrongNumber ) {
-            System.out.println(potentialAmstrongNumber + " est un nombre narcissique !");
-            return true;
+        int sumOfPoweredNumber = sumPoweredNumbers(potentialAmstrongNumber, numberOfDigit);
 
-        } else {
-            System.out.println(potentialAmstrongNumber + " n'est pas un nombre narcissique.");
-            return false;
-        }
+        return sumOfPoweredNumber == potentialAmstrongNumber;
 
     }
 

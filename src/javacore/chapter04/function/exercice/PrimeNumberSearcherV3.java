@@ -4,38 +4,31 @@ public class PrimeNumberSearcherV3 {
 
     public static void main(String[] args) {
 
-        checkIfPrimeNumber(55);
+        checkIfPrimeNumber(5);
 
     }
 
-    public static boolean isPrimeNumber(int number) {
+    public static boolean isPrimeNumber(int potentialPrimeNumber) {
 
-        for (int divisor = 2; divisor < number; divisor++) {
+        for (int potentialDivisor = 2; potentialDivisor < potentialPrimeNumber; potentialDivisor++) {
 
-            if (number % divisor == 0) {
-
+            if (potentialPrimeNumber % potentialDivisor == 0) {
                 return false;
-
             }
 
         }
-
         return true;
 
     }
 
-    public static void checkIfPrimeNumber(int number) {
+    public static void checkIfPrimeNumber(int potentialPrimeNumber) {
 
-        if (isPrimeNumber(number)) {
-
-            System.out.println(number + " est un Nombre Premier !");
-
+        if (isPrimeNumber(potentialPrimeNumber)) {
+            System.out.println(potentialPrimeNumber + " est un Nombre Premier !");
         }
 
         else {
-
-            System.out.println(number + " n'est un pas Nombre Premier...");
-
+            System.out.println(potentialPrimeNumber + " n'est un pas Nombre Premier...");
         }
 
     }

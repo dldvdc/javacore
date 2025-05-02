@@ -8,15 +8,15 @@ public class RecursiveFunction {
 
     }
 
-    public static void displayNumbers(int initialNumber, int endNumber) {
+    public static void displayNumbers(int currentNumber, int maxNumber) {
 
-        System.out.println(initialNumber);
+        System.out.println(currentNumber);
 
-        if (initialNumber < endNumber) {
+        if (currentNumber < maxNumber) {
 
-            initialNumber++;
+            currentNumber++;
 
-            displayNumbers(initialNumber, endNumber);
+            displayNumbers(currentNumber, maxNumber);
 
         }
 
