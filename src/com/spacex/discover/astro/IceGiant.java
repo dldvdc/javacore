@@ -1,8 +1,8 @@
-package apprendreJava.universe;
+package com.spacex.discover.astro;
 
 public class IceGiant extends Planet {
 
-    IceGiant(String name) {
+    public IceGiant(String name) {
         super(name);
     }
 }

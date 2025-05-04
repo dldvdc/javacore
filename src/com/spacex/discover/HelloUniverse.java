@@ -1,4 +1,4 @@
-package apprendreJava.universe;
+package com.spacex.discover;
 
 public class HelloUniverse {
 

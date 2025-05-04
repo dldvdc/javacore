@@ -1,8 +1,8 @@
-package apprendreJava.universe;
+package com.spacex.discover.astro;
 
 public class GasGiant extends Planet {
 
-    GasGiant(String name) {
+    public GasGiant(String name) {
         super(name);
     }
 

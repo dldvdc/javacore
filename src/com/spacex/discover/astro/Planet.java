@@ -1,28 +1,29 @@
-package apprendreJava.universe;
+package com.spacex.discover.astro;
 
-public abstract class Planet {
+public abstract class Planet implements Comparable<Planet> {
 
     // Static class properties (shared across all planets)
-    static String shape = "spherical";
-    static int discoveredCount = 0;
+    public  static String shape = "spherical";
+    public static int discoveredCount = 0;
 
     // Instance properties
-    String name;
-    long diameterKm;
+    public String name;
+    public long diameterKm;
+    public float distanceFromStar;
 
-    Atmosphere atmosphere;
+    public Atmosphere atmosphere;
 
-    int totalVisitors = 0;
-    Starship dockedStarship;
+    public int totalVisitors = 0;
+    // Starship dockedStarship;
 
     // Constructor
-    Planet(String name) {
+    public Planet(String name) {
         this.name = name;
         discoveredCount++;
     }
 
     // Static method
-    static String expansion(double distanceInBillionsOfKm) {
+    public static String expansion(double distanceInBillionsOfKm) {
         if (distanceInBillionsOfKm < 14) {
             return "Whoa, that's super fast!";
         } else {
@@ -31,13 +32,14 @@ public abstract class Planet {
     }
 
     // Instance methods
-    int revolution(int degrees) {
+    public int revolution(int degrees) {
         return degrees / 360;
     }
 
-    int rotation(int degrees) {
+    public int rotation(int degrees) {
         return degrees / 360;
     }
+
 
     /*
     // Alternative methods if you want to support docking by type or crew count directly:
@@ -55,4 +57,10 @@ public abstract class Planet {
         };
     }
     */
+
+    public int compareTo(Planet otherPlanet) {
+        return Float.compare(this.distanceFromStar, otherPlanet.distanceFromStar);
+    }
+
+
 }
