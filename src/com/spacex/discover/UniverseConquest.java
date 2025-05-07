@@ -3,7 +3,11 @@ package com.spacex.discover;
 import com.spacex.discover.astro.*;
 import com.spacex.discover.starships.CivilStarShip;
 import com.spacex.discover.starships.Starship;
-import com.spacex.discover.starships.StarshipType;
+import static com.spacex.discover.starships.StarshipType.FIGHTER;
+import static com.spacex.discover.starships.StarshipType.FRIGATE;
+import static com.spacex.discover.starships.StarshipType.CRUISER;
+import static com.spacex.discover.starships.StarshipType.FREIGHTER;
+import static com.spacex.discover.starships.StarshipType.WORLDSHIP;
 import com.spacex.discover.starships.WarStarShip;
 
 import java.util.Scanner;
@@ -137,7 +141,7 @@ public class UniverseConquest {
 
         // Docking starships
 
-        WarStarShip frigate516 = new WarStarShip(StarshipType.FRIGATE);
+        WarStarShip frigate516 = new WarStarShip(FRIGATE);
         frigate516.crewMemberCount = 9;
 
         /*
@@ -188,11 +192,11 @@ public class UniverseConquest {
 
         // Heritage
 
-        WarStarShip cruiser12 = new WarStarShip(StarshipType.CRUISER);
+        WarStarShip cruiser12 = new WarStarShip(CRUISER);
         cruiser12.armor = 156;
         cruiser12.shieldResistanceTime = 2;
 
-        CivilStarShip worldStarShip = new CivilStarShip(StarshipType.WORLDSHIP);
+        CivilStarShip worldStarShip = new CivilStarShip(WORLDSHIP);
         worldStarShip.armor = 4784;
         worldStarShip.shieldResistanceTime = 30;
 
@@ -211,22 +215,22 @@ public class UniverseConquest {
 
         // Abstract Method
 
-        WarStarShip hunter556 = new WarStarShip(StarshipType.FIGHTER);
+        WarStarShip hunter556 = new WarStarShip(FIGHTER);
         earth.dockStarShips(hunter556);
         System.out.println("\nHunter drops " + hunter556.loadCargo(20) + " tons of cargo\n");
 
-        WarStarShip frigate2144 = new WarStarShip(StarshipType.FRIGATE);
+        WarStarShip frigate2144 = new WarStarShip(FRIGATE);
         frigate2144.crewMemberCount = 100;
         earth.dockStarShips(frigate2144);
         System.out.println("\nFrigate drops " + frigate2144.loadCargo(45) + " tons of cargo");
         System.out.println("Frigate drops " + frigate2144.loadCargo(12) + " tons of cargo");
 
-        WarStarShip frigate2146 = new WarStarShip(StarshipType.FRIGATE);
+        WarStarShip frigate2146 = new WarStarShip(FRIGATE);
         frigate2146.crewMemberCount = 14;
         earth.dockStarShips(frigate2146);
         System.out.println("\nFrigate drops " + frigate2146.loadCargo(30) + " tons of cargo");
 
-        CivilStarShip worldShip554 = new CivilStarShip(StarshipType.WORLDSHIP);
+        CivilStarShip worldShip554 = new CivilStarShip(WORLDSHIP);
         earth.dockStarShips(worldShip554);
         System.out.println("\nWorldShip drops " + worldShip554.loadCargo(1560) + " tons of cargo");
         System.out.println("WorldShip drops " + worldShip554.loadCargo(600) + " tons of cargo");
@@ -234,12 +238,12 @@ public class UniverseConquest {
 
         // Scanner
 
-        CivilStarShip cargo = new CivilStarShip(StarshipType.FREIGHTER);
-        CivilStarShip worldShip = new CivilStarShip(StarshipType.WORLDSHIP);
+        CivilStarShip cargo = new CivilStarShip(FREIGHTER);
+        CivilStarShip worldShip = new CivilStarShip(WORLDSHIP);
 
-        WarStarShip hunter = new WarStarShip(StarshipType.FIGHTER);
-        WarStarShip frigate = new WarStarShip(StarshipType.FRIGATE);
-        WarStarShip cruiser = new WarStarShip(StarshipType.CRUISER);
+        WarStarShip hunter = new WarStarShip(FIGHTER);
+        WarStarShip frigate = new WarStarShip(FRIGATE);
+        WarStarShip cruiser = new WarStarShip(CRUISER);
 
 
 

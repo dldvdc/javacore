@@ -32,11 +32,11 @@ public abstract class Planet implements Comparable<Planet> {
     }
 
     // Instance methods
-    public int revolution(int degrees) {
+    public final int revolution(int degrees) {
         return degrees / 360;
     }
 
-    public int rotation(int degrees) {
+    public final int rotation(int degrees) {
         return degrees / 360;
     }
 

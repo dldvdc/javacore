@@ -1,18 +1,24 @@
 package com.spacex.discover.starships;
 
+import com.spacex.discover.TonnageExceededException;
+
 public abstract class Starship {
 
-    public StarshipType type;
+    public final StarshipType type;
     public int crewMemberCount;
 
     public int armor;
     public int shieldResistanceTime;
 
-    public int currentTonnage = 0;
+    protected int currentTonnage = 0;
 
     public int maxTonnage;
 
-    public abstract int loadCargo(int incomingCargo);
+    Starship(StarshipType type) {
+        this.type = type;
+    }
+
+    public abstract int loadCargo(int incomingCargo) throws TonnageExceededException;
 
     public void enableShield() {
         System.out.println("Shield Enabled - Starship type : " + type);

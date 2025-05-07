@@ -1,12 +1,14 @@
 package com.spacex.discover.starships;
 
+import com.spacex.discover.TonnageExceededException;
+
 public class WarStarShip extends Starship {
 
-    boolean isWeaponsDisabled;
+    private boolean isWeaponsDisabled;
 
     public WarStarShip(StarshipType type) {
 
-        this.type = type;
+        super(type);
 
         maxTonnage = switch (type) {
             case FRIGATE -> 50;
@@ -17,7 +19,7 @@ public class WarStarShip extends Starship {
 
     }
 
-    public int loadCargo(int incomingCargo) {
+    public int loadCargo(int incomingCargo) throws TonnageExceededException {
 
         if (type.equals("Hunter") || crewMemberCount < 12) {
 
@@ -32,7 +34,8 @@ public class WarStarShip extends Starship {
             if (incomingCargo > cargoToLoad) {
 
                 currentTonnage = maxTonnage;
-                return incomingCargo - cargoToLoad;
+                int tonnageExceeded =  incomingCargo - cargoToLoad;
+                throw new TonnageExceededException(tonnageExceeded);
 
             } else {
 
@@ -71,6 +74,11 @@ public class WarStarShip extends Starship {
     public void disableWeapons() {
         isWeaponsDisabled = true;
         System.out.println("Weapons of " + type + " : disabled");
+    }
+
+    public void enableWeapons() {
+        isWeaponsDisabled = false;
+        System.out.println("Weapons of " + type + " : enabled");
     }
 
 
