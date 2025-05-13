@@ -21,6 +21,7 @@ public class LibraryBook {
                 + " | Auteur : " + author
                 + " | Année de publication : " + publicationYear
                 + " | Statut : " + availabilityStatus);
+
     }
 
 }
