@@ -30,8 +30,8 @@ public class PaperOrderPriceCalculator {
 
     // Contructeur(s)
 
-    public PaperOrderPriceCalculator(int orderedSheetsCount) {
-        this.orderedSheetQuantity = orderedSheetsCount;
+    public PaperOrderPriceCalculator(int orderedSheetQuantity) {
+        this.orderedSheetQuantity = orderedSheetQuantity;
         this.finalInvoiceAmount = this.calculateFinalInvoice();
     }
 
@@ -122,7 +122,7 @@ public class PaperOrderPriceCalculator {
 
     }
 
-    public  double addShippingFeeIfApplicable(double price) {
+    public double addShippingFeeIfApplicable(double price) {
         return price < FREE_SHIPPING_MIN_TOTAL ? price + SHIPPING_FEE : price;
     }
 
