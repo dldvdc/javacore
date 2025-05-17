@@ -21,11 +21,11 @@ public class BubbleSorting {
                 if (numbers[nextNumberIndex] < numbers[minNumberIndex]) {
                     minNumberIndex = nextNumberIndex;
                 }
-
-                int currentNumber = numbers[currentNumberIndex];
-                numbers[currentNumberIndex] = numbers[minNumberIndex];
-                numbers[minNumberIndex] = currentNumber;
             }
+
+            int currentNumber = numbers[currentNumberIndex];
+            numbers[currentNumberIndex] = numbers[minNumberIndex];
+            numbers[minNumberIndex] = currentNumber;
 
         }
 
