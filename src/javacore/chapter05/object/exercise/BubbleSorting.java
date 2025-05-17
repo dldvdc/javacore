@@ -6,7 +6,7 @@ public class BubbleSorting {
 
         int[] numbers = {30, 25, 85, 6, 43, 58, 97, 78, 94, 27, 9, 38, 41, 35, 52, 10, 16, 22, 96, 74, 44, 55, 82, 28, 83, 69, 90, 89, 26, 7, 47, 98, 50, 42, 68, 91, 70, 65, 79, 4, 75, 49, 61, 39, 48, 72, 36, 18, 1, 15, 77, 99, 33, 24, 13, 19, 73, 17, 14, 86, 54, 45, 76, 21, 100, 63, 60, 56, 93, 87, 81, 8, 29, 34, 53, 37, 71, 67, 57, 66, 11, 46, 95, 20, 88, 64, 59, 84, 12, 92, 80, 40, 23, 3, 2, 32, 31, 5, 62, 51};
 
-        // Tri par sélection
+        // 1 - Tri par sélection ?
         int[] selectionInput = numbers.clone();
 
         long startSelection = System.nanoTime();
@@ -57,7 +57,9 @@ public class BubbleSorting {
 
     }
 
-    // 1
+    // ###################################################################################################### //
+
+    // 1 - Exercice (Tri par sélection ?)
     public static int[] sort(int[] numbers) {
 
         for (int currentNumberIndex = 0; currentNumberIndex < numbers.length ; currentNumberIndex++) {
@@ -81,130 +83,153 @@ public class BubbleSorting {
 
     }
 
+    // ###################################################################################################### //
 
-    // 2
-    public static int[] bubbleSort(int[] numbers) {
+    // 2 - Bubble Sort
+    public static int[] bubbleSort(int[] unsortedArray) {
 
-        int arrayLength = numbers.length;
-        boolean swapped;
+        int numberOfElements = unsortedArray.length;
+        boolean hasSwapped;
 
-        for (int i = 0; i < arrayLength - 1; i++) {
+        // Parcours de tous les éléments (sauf le dernier déjà trié à chaque tour)
+        for (int pass = 0; pass < numberOfElements - 1; pass++) {
 
-            swapped = false;
+            hasSwapped = false; // Permet de sortir plus tôt si tout est déjà trié
 
-            for (int j = 0; j < arrayLength - 1 - i; j++) {
-                if (numbers[j] > numbers[j + 1]) {
+            // Comparer chaque paire d'éléments adjacents
+            for (int index = 0; index < numberOfElements - 1 - pass; index++) {
 
-                    int temp = numbers[j];
-                    numbers[j] = numbers[j + 1];
-                    numbers[j + 1] = temp;
+                if (unsortedArray[index] > unsortedArray[index + 1]) {
+                    // Échange si les éléments sont dans le mauvais ordre
+                    int temporary = unsortedArray[index];
+                    unsortedArray[index] = unsortedArray[index + 1];
+                    unsortedArray[index + 1] = temporary;
 
-                    swapped = true;
+                    hasSwapped = true;
                 }
             }
-            if (!swapped) {
+
+            // Optimisation : arrêt si aucun échange n’a été fait
+            if (!hasSwapped) {
                 break;
             }
         }
 
-        return numbers;
-
+        return unsortedArray;
     }
 
+    // ###################################################################################################### //
 
-    // 3
-    // Tri par insertion
-    public static void insertionSort(int[] array) {
+    // 3 - Tri par insertion
+    public static int[] insertionSort(int[] unsortedArray) {
 
-        for (int i = 1; i < array.length; i++) {
+        // On commence à partir du deuxième élément
+        for (int currentIndex = 1; currentIndex < unsortedArray.length; currentIndex++) {
 
-            int key = array[i];
-            int j = i - 1;
+            int valueToInsert = unsortedArray[currentIndex]; // Valeur à insérer
+            int previousIndex = currentIndex - 1;
 
-            while (j >= 0 && array[j] > key) {
-
-                array[j + 1] = array[j];
-                j--;
-
+            // Décaler vers la droite tous les éléments plus grands que la valeur à insérer
+            while (previousIndex >= 0 && unsortedArray[previousIndex] > valueToInsert) {
+                unsortedArray[previousIndex + 1] = unsortedArray[previousIndex];
+                previousIndex--;
             }
 
-            array[j + 1] = key;
-
+            // Insérer la valeur à sa place triée
+            unsortedArray[previousIndex + 1] = valueToInsert;
         }
+
+        return unsortedArray;
     }
 
+    // ###################################################################################################### //
 
     // Tri rapide (Quick Sort)
-    public static void quickSort(int[] array, int low, int high) {
-
-        if (low < high) {
-            int pivotIndex = partition(array, low, high);
-            quickSort(array, low, pivotIndex - 1);
-            quickSort(array, pivotIndex + 1, high);
-
+    public static int[] quickSort(int[] array, int lowIndex, int highIndex) {
+        if (lowIndex < highIndex) {
+            int pivotIndex = partition(array, lowIndex, highIndex);
+            quickSort(array, lowIndex, pivotIndex - 1);
+            quickSort(array, pivotIndex + 1, highIndex);
         }
+        return array;
     }
 
-    private static int partition(int[] array, int low, int high) {
+    private static int partition(int[] array, int lowIndex, int highIndex) {
+        int pivotValue = array[highIndex]; // Choix du pivot (ici, dernier élément)
+        int smallerElementIndex = lowIndex - 1;
 
-        int pivot = array[high];
-        int i = low - 1;
-        for (int j = low; j < high; j++) {
-
-            if (array[j] < pivot) {
-                i++;
-                int temp = array[i]; array[i] = array[j]; array[j] = temp;
+        for (int currentIndex = lowIndex; currentIndex < highIndex; currentIndex++) {
+            // Si l'élément courant est plus petit ou égal au pivot, on l'échange
+            if (array[currentIndex] <= pivotValue) {
+                smallerElementIndex++;
+                // Échange array[smallerElementIndex] et array[currentIndex]
+                int temp = array[smallerElementIndex];
+                array[smallerElementIndex] = array[currentIndex];
+                array[currentIndex] = temp;
             }
-
         }
 
-        int temp = array[i + 1]; array[i + 1] = array[high]; array[high] = temp;
-        return i + 1;
+        // Placer le pivot à la bonne position (juste après les plus petits)
+        int temp = array[smallerElementIndex + 1];
+        array[smallerElementIndex + 1] = array[highIndex];
+        array[highIndex] = temp;
 
+        return smallerElementIndex + 1; // Retourne la position finale du pivot
     }
 
+    // ###################################################################################################### //
 
     // Tri fusion (merge sort)
-    public static int[] mergeSort(int[] array) {
-        if (array.length <= 1) {
-            return array;
+    public static int[] mergeSort(int[] arrayToSort) {
+        // Cas de base : un tableau de taille 0 ou 1 est déjà trié
+        if (arrayToSort.length <= 1) {
+            return arrayToSort;
         }
 
-        int mid = array.length / 2;
-        int[] left = new int[mid];
-        int[] right = new int[array.length - mid];
+        int middleIndex = arrayToSort.length / 2;
 
-        System.arraycopy(array, 0, left, 0, mid);
-        System.arraycopy(array, mid, right, 0, array.length - mid);
+        // Diviser le tableau en deux sous-tableaux
+        int[] leftSubArray = new int[middleIndex];
+        int[] rightSubArray = new int[arrayToSort.length - middleIndex];
 
-        left = mergeSort(left);
-        right = mergeSort(right);
+        System.arraycopy(arrayToSort, 0, leftSubArray, 0, middleIndex);
+        System.arraycopy(arrayToSort, middleIndex, rightSubArray, 0, arrayToSort.length - middleIndex);
 
-        return merge(left, right);
+        // Tri récursif des deux sous-tableaux
+        leftSubArray = mergeSort(leftSubArray);
+        rightSubArray = mergeSort(rightSubArray);
+
+        // Fusionner les deux sous-tableaux triés
+        return merge(leftSubArray, rightSubArray);
     }
 
-    private static int[] merge(int[] left, int[] right) {
-        int[] result = new int[left.length + right.length];
-        int l = 0, r = 0, i = 0;
+    private static int[] merge(int[] leftArray, int[] rightArray) {
+        int[] mergedArray = new int[leftArray.length + rightArray.length];
+        int leftIndex = 0, rightIndex = 0, mergeIndex = 0;
 
-        while (l < left.length && r < right.length) {
-            if (left[l] <= right[r]) {
-                result[i++] = left[l++];
+        // Fusionner les éléments dans l'ordre croissant
+        while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+            if (leftArray[leftIndex] <= rightArray[rightIndex]) {
+                mergedArray[mergeIndex++] = leftArray[leftIndex++];
             } else {
-                result[i++] = right[r++];
+                mergedArray[mergeIndex++] = rightArray[rightIndex++];
             }
         }
 
-        while (l < left.length) {
-            result[i++] = left[l++];
+        // Copier les éléments restants de leftArray s'il y en a
+        while (leftIndex < leftArray.length) {
+            mergedArray[mergeIndex++] = leftArray[leftIndex++];
         }
 
-        while (r < right.length) {
-            result[i++] = right[r++];
+        // Copier les éléments restants de rightArray s'il y en a
+        while (rightIndex < rightArray.length) {
+            mergedArray[mergeIndex++] = rightArray[rightIndex++];
         }
 
-        return result;
+        return mergedArray;
     }
+
+    // ###################################################################################################### //
 
 
     public static void testSortMethod(String name, int[] array) {
