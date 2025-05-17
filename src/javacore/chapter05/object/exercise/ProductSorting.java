@@ -18,7 +18,9 @@ public class ProductSorting {
 
 
     public void displayProduct() {
-        System.out.println("Product Name : " + this.name + " | Category : " + this.category + " | Price : " + this.price + this.currency);
+        System.out.println("Product Name : " + this.name
+                + " | Category : " + this.category
+                + " | Price : " + this.price + this.currency);
     }
 
 
@@ -26,8 +28,7 @@ public class ProductSorting {
 
         ProductSorting[] productArray = generateFakeProductList();
 
-        // Écrivez votre code ci-dessous
-
+        // Je n'arrive pas à faire une copie safe de l'instance pour éviter de modifier l'originale... valeurs référence
         ProductSorting[] sortedProducts = sortProductArray(productArray);
 
         for (ProductSorting product : sortedProducts) {
@@ -59,6 +60,7 @@ public class ProductSorting {
 
     public static ProductSorting[] sortProductArray (ProductSorting[] productArray) {
 
+        // Je n'arrive pas à faire une copie safe de l'instance pour éviter de modifier l'originale... valeur référence
         ProductSorting[] sortedProductArray = productArray;
 
         for (int currentProductIndex = 0; currentProductIndex < sortedProductArray.length ; currentProductIndex++) {
@@ -82,17 +84,17 @@ public class ProductSorting {
 
     }
 
-    public static double convertEuroToDollarFixedRate(double amountInEuro) {
+    public static double convertEuroToDollar(double amountInEuro) {
         final double EURO_TO_DOLLAR_RATE = 0.95;
         return amountInEuro * EURO_TO_DOLLAR_RATE;
     }
 
-    public static double convertYuanToDollarFixedRate(double amountInYuan) {
+    public static double convertYuanToDollar(double amountInYuan) {
         final double YUAN_TO_DOLLAR_RATE = 0.14;
         return amountInYuan * YUAN_TO_DOLLAR_RATE;
     }
 
-    public static double convertPoundToDollarFixedRate(double amountInPound) {
+    public static double convertPoundToDollar(double amountInPound) {
         final double POUND_TO_DOLLAR_RATE = 0.79;
         return amountInPound *POUND_TO_DOLLAR_RATE;
     }
@@ -100,9 +102,9 @@ public class ProductSorting {
     public double getPriceInDollar() {
 
         return switch (this.currency) {
-            case '€' -> convertEuroToDollarFixedRate(this.price);
-            case '¥' -> convertYuanToDollarFixedRate(this.price);
-            case '£' -> convertPoundToDollarFixedRate(this.price);
+            case '€' -> convertEuroToDollar(this.price);
+            case '¥' -> convertYuanToDollar(this.price);
+            case '£' -> convertPoundToDollar(this.price);
             default -> this.price;
 
         };
