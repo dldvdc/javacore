@@ -24,7 +24,7 @@ public class UserQuestionnaire {
 
 
             System.out.print("Do you want to continue ? ( yes / no ) : ");
-            userContinue = sc.nextLine();
+            userContinue = sc.nextLine().toLowerCase();
 
             if (userContinue.equals("no")) {
 

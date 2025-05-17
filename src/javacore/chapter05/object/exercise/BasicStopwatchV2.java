@@ -35,14 +35,22 @@ public class BasicStopwatchV2 {
             Thread.sleep(1000);
 
             elapsedSeconds++;
+            currentSeconds++;
 
-            currentSeconds = elapsedSeconds % 60;
-            currentMinutes = (elapsedSeconds / 60) % 60;
-            currentHours = (elapsedSeconds / 3600);
+            if ( currentSeconds >= 60 ) {
+                currentMinutes++;
+                currentSeconds = 0;
+
+                if ( currentMinutes >= 60 ) {
+                    currentHours++;
+                    currentMinutes = 0;
+                }
+
+            }
 
             displayWatchTime(currentHours, currentMinutes, currentSeconds);
 
-        } while (elapsedSeconds <= targetDurationInSeconds);
+        } while (elapsedSeconds < targetDurationInSeconds);
 
     }
 
