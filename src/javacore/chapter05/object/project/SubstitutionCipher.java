@@ -7,6 +7,8 @@ public class SubstitutionCipher {
     final String alphabet;
     String substitutionAlphabet;
 
+    static String reservedSeparator = ":::";
+
     private static final Scanner scanner = new Scanner(System.in);
 
     public SubstitutionCipher(String alphabet, String substitutionAlphabet) {
@@ -30,10 +32,10 @@ public class SubstitutionCipher {
         System.out.println(substitutionCipher.cascadeCipher(textToEncrypt));
 
         // 3
-        System.out.println(substitutionCipher.cipher(textToEncrypt, true));
+        System.out.println(substitutionCipher.cipher(textToEncrypt));
 
         // 4
-        System.out.println(substitutionCipher.cipher(textToEncrypt, true, 3));
+        System.out.println(substitutionCipher.cipher(textToEncrypt,3));
 
         // 5 - 6 - 7
         substitutionCipher.improvedCipher();
@@ -43,7 +45,9 @@ public class SubstitutionCipher {
 
     public static int getUserOption() {
 
-        while (true) {
+        int attemptCount = 0;
+
+        while (attemptCount <= 10) {
 
             System.out.println("Sélectionnez l'une des options ci-dessous : ");
             System.out.println("(1) Crypter un message");
@@ -65,14 +69,20 @@ public class SubstitutionCipher {
                 System.out.println("Veuillez entrer un nombre valide.\n");
             }
 
+            attemptCount++;
+
         }
+
+        return 0;
 
     }
 
 
     public static String getUserMessage() {
 
-        while (true) {
+        int attemptCount = 0;
+
+        while (attemptCount <= 10) {
 
             System.out.print("\nSaisissez le message que vous souhaitez traiter: ");
             String inputText  = scanner.nextLine().toLowerCase();
@@ -86,28 +96,30 @@ public class SubstitutionCipher {
             else if (!inputText.trim().matches(".*[a-z].*")) {
                 System.out.println("Le message doit contenir au moins une lettre de l'alphabet.\n");
             }
-            else if (inputText.contains(":::")) {
-                System.out.println("Le motif \":::\" est réservé.\n");
-            }
             else {
                 return inputText;
             }
 
+            attemptCount++;
+
         }
+        return null;
 
     }
 
 
     public static int getUserIterationCount() {
 
-        while (true) {
+        int attemptCount = 0;
+
+        while (attemptCount <= 10) {
 
             System.out.print("Combien souhaitez-vous d'itérations ? : ");
 
             String input = scanner.nextLine().trim();
 
             if (input.isEmpty()) {
-                return 1;
+                break;
             }
 
             try {
@@ -125,11 +137,15 @@ public class SubstitutionCipher {
                 }
 
             }
-            catch (NumberFormatException e) {
+            catch (NumberFormatException | NullPointerException e) {
                 System.out.println("Veuillez entrer un nombre valide.\n");
             }
 
+            attemptCount++;
+
         }
+        System.out.println("Une seule itération sera générée.");
+        return 1;
 
     }
 
@@ -149,9 +165,54 @@ public class SubstitutionCipher {
     }
 
 
+    public boolean hasAllAlphabetletter(String substitutionAlphabet) {
+
+        for (int i = 0; i < this.alphabet.length() ; i++ ) {
+
+            char currentAlphabetChar = this.alphabet.charAt(i);
+            boolean letterFound = false;
+
+            for (int j = 0 ; j < substitutionAlphabet.length() ; j++) {
+
+                if ( substitutionAlphabet.charAt(j) == currentAlphabetChar) {
+                    letterFound = true;
+                    break;
+                }
+            }
+            if (!letterFound) return false;
+
+        }
+        return true;
+    };
+
+
+    public boolean hasOnlyAlphabetLetter(String substitutionAlphabet) {
+
+        for (int i = 0; i < this.alphabet.length() ; i++ ) {
+
+            char currentAlphabetChar = this.alphabet.charAt(i);
+            boolean isAlphabetLetter = false;
+
+            for (int j = 0 ; j < substitutionAlphabet.length() ; j++) {
+
+                if ( substitutionAlphabet.charAt(j) == currentAlphabetChar) {
+                    isAlphabetLetter = true;
+                    break;
+                }
+            }
+            if (!isAlphabetLetter) return false;
+
+        }
+        return true;
+    };
+
+
+
     public String getUserSubstitutionAlphabet() {
 
-        while (true) {
+        int attemptCount = 0;
+
+        while (attemptCount <= 10) {
 
             System.out.print("Entrez votre alphabet de substitution : ");
 
@@ -160,18 +221,25 @@ public class SubstitutionCipher {
             if (inputSubstitutionAlphabet.length() != this.alphabet.length()) {
                 System.out.println("La longueur de votre alphabet de substitution doit strictement correspondre aux "
                         + this.alphabet.length() + " l'alphabet latin : " + this.alphabet+ ".\n");
-            }
-            else if (!inputSubstitutionAlphabet.matches("[a-z]")) {
-                System.out.println("L'alphabet de substitution doit uniquement contenir des lettres minuscules.\n");
-            }
-            else if (hasDuplicateChar(inputSubstitutionAlphabet)) {
+            } else if (!hasOnlyAlphabetLetter(inputSubstitutionAlphabet)) {
+                System.out.println("Votre alphabet de substitution ne doit contenir que des lettres de l'alphabet latin ou des espaces\n");
+
+            } else if (hasDuplicateChar(inputSubstitutionAlphabet)) {
                 System.out.println("Votre alphabet de substitution ne peut pas contenir de doublons.\n");
+            }
+            // Celle -ci est superflue parce que la somme des deux vérifications précédentes la vérifie....
+            else if (!hasAllAlphabetletter(inputSubstitutionAlphabet)) {
+                System.out.println("Votre alphabet de substitution doit contenir toutes les lettres de l'alphabet latin\n");
             }
             else {
                 return inputSubstitutionAlphabet;
             }
 
+            attemptCount++;
+
         }
+
+        return null;
 
     }
 
@@ -225,42 +293,88 @@ public class SubstitutionCipher {
 
     }
 
+    public String separatorFinder(String message) {
+
+        char[] separatorCharArray = {
+                ':', '!', '#', '$', '%', '&', '(', ')',
+                '*', '+', ',', '-', '.', '/', ';', '<', '=',
+                '>', '?', '@', '[', ']', '^', '_', '`', '{',
+                '|', '}', '~'
+        };
+
+        // String testMessage = ":::!!!###$$$%%%&&&((()))***+++,,,---...///;;;<<<===>>>???@@@[[[]]]^^^___```{{{|||}}}~~~";
+
+        for (char separatorChar : separatorCharArray) {
+            String separatorCandidate = "" + separatorChar + separatorChar + separatorChar;
+
+            if (!message.contains(separatorCandidate)) {
+                return separatorCandidate;
+            }
+
+        }
+
+        return "";
+
+    }
+
 
     // 3
-    public String cipher(String message, boolean toEncrypt) {
+    public String cipher(String message) {
+        return applyCipher(message, this.alphabet, this.substitutionAlphabet);
+    }
+
+    public String deCipher(String message) {
+        return applyCipher(message, this.substitutionAlphabet, this.alphabet);
+    }
+
+    public String applyCipher(String message, String fromAlphabet, String toAlphabet) {
+        String resultMessage = message;
+        String nutShell = separatorFinder(resultMessage);
+
+        if (nutShell.isEmpty()) {
+            return "Vous pouvez nous prendre pour des nazis mais ne vous prenez pas pour Alan Turing.";
+        }
+
+        for (int i = 0; i < fromAlphabet.length(); i++) {
+
+            String originalChar = String.valueOf(fromAlphabet.charAt(i));
+            String charNut = nutShell + i + nutShell;
+            resultMessage = resultMessage.replace(originalChar, charNut);
+
+        }
+
+        for (int i = 0; i < toAlphabet.length(); i++) {
+
+            String charNut = nutShell + i + nutShell;
+            String replacementChar = String.valueOf(toAlphabet.charAt(i));
+            resultMessage = resultMessage.replace(charNut, replacementChar);
+
+        }
+
+        return resultMessage;
+    }
+
+
+    // 4
+    public String cipher(String message, int cipherIterations) {
 
         String resultMessage = message;
 
-        for (int i = 0; i < this.alphabet.length(); i++) {
-
-            String originalChar = toEncrypt ?
-                    String.valueOf(this.alphabet.charAt(i)) : String.valueOf(this.substitutionAlphabet.charAt(i));
-            String charNut = ":::" + i + ":::" ;
-
-            resultMessage = resultMessage.replaceAll(originalChar, charNut);
-        }
-
-        for (int i = 0; i < this.alphabet.length(); i++) {
-
-            String charNut = ":::" + i + ":::";
-            String replacementChar = toEncrypt ?
-                    String.valueOf(this.substitutionAlphabet.charAt(i)) : String.valueOf(this.alphabet.charAt(i));
-
-            resultMessage = resultMessage.replaceAll(charNut, replacementChar);
+        while (cipherIterations > 0) {
+            resultMessage = this.cipher(resultMessage);
+            cipherIterations--;
         }
 
         return resultMessage;
 
     }
 
-
-    // 4
-    public String cipher(String message, boolean toEncrypt, int cipherIterations) {
+    public String deCipher(String message, int cipherIterations) {
 
         String resultMessage = message;
 
         while (cipherIterations > 0) {
-            resultMessage = this.cipher(resultMessage, toEncrypt);
+            resultMessage = this.deCipher(resultMessage);
             cipherIterations--;
         }
 
@@ -274,21 +388,31 @@ public class SubstitutionCipher {
 
         System.out.println("\nBienvenue chez Cipher !\n");
 
-        while (true) {
+        int attemptCount = 0;
+
+        while (attemptCount < 10) {
 
             int cipherOption = getUserOption();
-            boolean isEncrypted = cipherOption == 1;
             String message = getUserMessage();
             this.substitutionAlphabet = getUserSubstitutionAlphabet();
             int iterationCount = getUserIterationCount();
 
-            String resultMessage = cipher(message, isEncrypted, iterationCount);
-            String messageStatus = isEncrypted ? "crypté" : "décrypté";
+            String resultMessage;
+            String messageStatus;
+
+            if (cipherOption == 1) {
+                resultMessage = cipher(message, iterationCount);
+                messageStatus = "crypté";
+            }
+            else {
+                resultMessage = deCipher(message, iterationCount);
+                messageStatus = "décrypté";
+            }
 
             System.out.println("\nVoici votre message " + messageStatus + " :\n\n");
             System.out.println(resultMessage);
 
-            while (true) {
+            while (attemptCount < 10) {
 
                 System.out.print("\nSouhaitez-vous traiter un autre message ? (o/n) : ");
                 String restartChoice = scanner.nextLine().trim().toLowerCase();
@@ -297,6 +421,7 @@ public class SubstitutionCipher {
 
                 else if (!restartChoice.equals("n")) {
                     System.out.println("\nRéponse non valide. Merci de répondre par 'o' ou 'n'.\n");
+                    attemptCount++;
                 }
 
                 else return;

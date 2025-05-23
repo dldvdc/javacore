@@ -233,6 +233,43 @@ public class BubbleSorting {
 
     // ###################################################################################################### //
 
+    // Tri Dichotomique (Dicotomic Sorting)
+    public static int[] binaryInsertionSort(int[] array) {
+        for (int i = 1; i < array.length; i++) {
+            int key = array[i];
+
+            // Trouver l'index d'insertion grâce à une recherche binaire
+            int insertIndex = binarySearch(array, key, 0, i - 1);
+
+            // Décaler les éléments pour faire de la place à key
+            int j = i;
+            while (j > insertIndex) {
+                array[j] = array[j - 1];
+                j--;
+            }
+
+            // Insérer la valeur à la bonne position
+            array[insertIndex] = key;
+        }
+        return array;
+    }
+
+    // Méthode de recherche binaire pour trouver l'indice d'insertion
+    private static int binarySearch(int[] array, int key, int start, int end) {
+        while (start <= end) {
+            int mid = start + (end - start) / 2;
+
+            if (key < array[mid]) {
+                end = mid - 1;
+            } else {
+                start = mid + 1;
+            }
+        }
+        return start; // Position où insérer la clé
+    }
+
+
+    // ###################################################################################################### //
 
     public static void testSortMethod(String name, int[] array) {
 

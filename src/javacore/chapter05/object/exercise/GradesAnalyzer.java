@@ -62,8 +62,6 @@ public class GradesAnalyzer {
 
         }
 
-        scanner.close();
-
 
         // 7
 
@@ -139,6 +137,35 @@ public class GradesAnalyzer {
 
     }
 
+    // factorisation de maxGrade et minGrade
+
+    public static double[] getMinAndMaxGrade(double[] gradesArray) {
+
+        double minGrade = gradesArray[0];
+        double maxGrade = gradesArray[0];
+
+        for (int i = 1; i < gradesArray.length; i++) {
+            double currentGrade = gradesArray[i];
+
+            if (currentGrade < minGrade) {
+                minGrade = currentGrade;
+            }
+
+            if (currentGrade > maxGrade) {
+                maxGrade = currentGrade;
+            }
+        }
+
+        System.out.println("\nNote Minimale : " + minGrade + "/20");
+        System.out.println("Note Maximale : " + maxGrade + "/20");
+
+        return new double[]{minGrade, maxGrade};
+
+    }
+
+
+
+
 
     // 6
 
@@ -210,51 +237,48 @@ public class GradesAnalyzer {
 
         Scanner scanner = new Scanner(System.in);
 
-        double[] currentGradeArray = new double[1];
+        double[] currentGradeArray = new double[0];
+        double[] lastGradeArray;
 
-        for (int i = 0 ; i < currentGradeArray.length ; i++) {
+        for (int newGradeIndex = 0 ; newGradeIndex <= 200 ; newGradeIndex++) {
 
-            while (true) {
+            System.out.print("Entrez votre note n°" + (newGradeIndex+1) + " ou taper 'done' pour terminer : ");
+            String userInput = scanner.nextLine().trim();
 
-                int gradeCount = 0;
+            if (userInput.equalsIgnoreCase("done")) {
+                break;
+            }
+            else if (userInput.isEmpty()) {
+                continue;
+            }
 
-                System.out.print("Entrez une note à enregistrer ou taper 'done' pour terminer : ");
-                String userInput = scanner.nextLine().trim();
+            try {
+                double currentGrade = Double.parseDouble(userInput);
 
-                if (userInput.equalsIgnoreCase("done")) {
-                    break;
+                if (currentGrade < 0 || currentGrade > 20) {
+                    System.out.println("Une note doit-être comprise entre 0 et 20.");
                 }
+                else {
 
-                else if (userInput.isEmpty()) {
-                    continue;
-                }
+                    lastGradeArray = currentGradeArray;
+                    currentGradeArray = new double[newGradeIndex + 1];
 
-                try {
-
-                    double currentGrade = Integer.parseInt(userInput);
-
-                    if (currentGrade < 0 || currentGrade > 20) {
-                        System.out.println("Une note doit-être comprise entre 0 et 20.");
-                        continue;
-                    }
-                    else {
-
-                        currentGradeArray = new double[gradeCount++];
-                        for (int arrayIndex = 0 ; arrayIndex < currentGradeArray.length ; arrayIndex++) {
-
-                        }
-                        currentGradeArray[i] = currentGrade;
+                    for (int previousGradeIndex = 0 ; previousGradeIndex < lastGradeArray.length ; previousGradeIndex++) {
+                        currentGradeArray[previousGradeIndex] = lastGradeArray[previousGradeIndex];
                     }
 
-                } catch (NumberFormatException e) {
-                    System.out.println("Veuillez entrer un nombre valide.\n");
+                    currentGradeArray[newGradeIndex] = currentGrade;
+
                 }
 
+            } catch (NumberFormatException e) {
+                System.out.println("Veuillez entrer un nombre valide.\n");
             }
 
         }
 
         scanner.close();
+        System.out.println(currentGradeArray[0]);
         displayStatistics(currentGradeArray);
 
     }
@@ -263,8 +287,7 @@ public class GradesAnalyzer {
     public static void displayStatistics(double[] gradesArray) {
 
         getAverage(gradesArray);
-        getMinGrade(gradesArray);
-        getMaxGrade(gradesArray);
+        getMinAndMaxGrade(gradesArray);
         getGradeCountAboveThreshold(gradesArray, 10);
         getGradeCountBetweenStandardsRanges(gradesArray);
 

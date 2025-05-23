@@ -60,27 +60,26 @@ public class ProductSorting {
 
     public static ProductSorting[] sortProductArray (ProductSorting[] productArray) {
 
-        // Je n'arrive pas à faire une copie safe de l'instance pour éviter de modifier l'originale... valeur référence
-        ProductSorting[] sortedProductArray = productArray;
+        ProductSorting[] sortedByPriceProductArray = productArray;
 
-        for (int currentProductIndex = 0; currentProductIndex < sortedProductArray.length ; currentProductIndex++) {
+        for (int currentProductIndex = 0; currentProductIndex < sortedByPriceProductArray.length ; currentProductIndex++) {
 
             int mostExpensiveProductIndex = currentProductIndex;
 
-            for (int nextProductIndex = currentProductIndex + 1; nextProductIndex < sortedProductArray.length ; nextProductIndex++) {
+            for (int nextProductIndex = currentProductIndex + 1; nextProductIndex < sortedByPriceProductArray.length ; nextProductIndex++) {
 
-                if (sortedProductArray[nextProductIndex].getPriceInDollar() > sortedProductArray[mostExpensiveProductIndex].getPriceInDollar()) {
+                if (sortedByPriceProductArray[nextProductIndex].getPriceInDollar() > sortedByPriceProductArray[mostExpensiveProductIndex].getPriceInDollar()) {
                     mostExpensiveProductIndex = nextProductIndex;
                 }
             }
 
-            ProductSorting currentProduct = sortedProductArray[currentProductIndex];
-            sortedProductArray[currentProductIndex] = sortedProductArray[mostExpensiveProductIndex];
-            sortedProductArray[mostExpensiveProductIndex] = currentProduct;
+            ProductSorting currentProduct = sortedByPriceProductArray[currentProductIndex];
+            sortedByPriceProductArray[currentProductIndex] = sortedByPriceProductArray[mostExpensiveProductIndex];
+            sortedByPriceProductArray[mostExpensiveProductIndex] = currentProduct;
 
         }
 
-        return sortedProductArray;
+        return sortedByPriceProductArray;
 
     }
 
@@ -96,7 +95,7 @@ public class ProductSorting {
 
     public static double convertPoundToDollar(double amountInPound) {
         final double POUND_TO_DOLLAR_RATE = 0.79;
-        return amountInPound *POUND_TO_DOLLAR_RATE;
+        return amountInPound * POUND_TO_DOLLAR_RATE;
     }
 
     public double getPriceInDollar() {
