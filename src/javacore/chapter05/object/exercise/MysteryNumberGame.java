@@ -7,7 +7,7 @@ public class MysteryNumberGame {
 
     private static final int MIN = 0;
     private static final int MAX = 100;
-    private static final int userMaxAttempt = 7;
+    private static final int USER_MAX_ATTEMPT = 7;
 
     private final int mysteryNumber;
 
@@ -30,7 +30,7 @@ public class MysteryNumberGame {
 
         System.out.print("\nCherchez le nombre mystère : ");
 
-        while (userAttempt < userMaxAttempt) {
+        while (userAttempt < USER_MAX_ATTEMPT) {
 
             int userNumber = Integer.parseInt(scanner.nextLine());
 
@@ -49,12 +49,12 @@ public class MysteryNumberGame {
 
                 userAttempt++;
 
-                if (userAttempt == userMaxAttempt) {
+                if (userAttempt ==USER_MAX_ATTEMPT) {
                     System.out.print("Vous avez perdu...");
                     break;
                 }
                 else {
-                    System.out.println("Il vous reste encore " + (userMaxAttempt - userAttempt) + " essais...\n");
+                    System.out.println("Il vous reste encore " + (USER_MAX_ATTEMPT - userAttempt) + " essais...\n");
                 }
 
             }
