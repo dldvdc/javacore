@@ -14,12 +14,12 @@ public class MysteryNumberGame {
     public MysteryNumberGame() {
         Random random = new Random();
         this.mysteryNumber = random.nextInt((MAX - MIN) + 1) + MIN;
-        launchGame();
     }
 
     public static void main(String[] args) {
 
         MysteryNumberGame game = new MysteryNumberGame();
+        game.launchGame();
 
     }
 
