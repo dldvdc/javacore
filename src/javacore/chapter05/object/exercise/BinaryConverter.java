@@ -22,7 +22,8 @@ public class BinaryConverter {
         // 4
         String userBinaryText = BinaryConverter.getBinaryTextFromUser();
 
-        if (userBinaryText.length() > 53) {
+        // C'est en effet plus clair en spécifiant 64, 53 étant apparemment une limitation de la précision pour un double...
+        if (userBinaryText.length() > 64) {
             System.out.println(BinaryConverter.convertBigBinaryToDecimal(userBinaryText));
         }
         else {
@@ -86,8 +87,9 @@ public class BinaryConverter {
         Scanner scanner = new Scanner(System.in);
 
         final int MAX_ATTEMPTS = 5;
+        int userAttempts = 0;
 
-        for (int attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+        do {
 
             System.out.print("Saisissez un nombre binaire à convertir : ");
             String userBinaryText = scanner.nextLine().trim();
@@ -106,9 +108,10 @@ public class BinaryConverter {
             }
             else {
                 System.out.println("Entrée invalide : seuls 0 ou 1 sont autorisés.");
+                userAttempts++;
             }
 
-        }
+        } while (userAttempts <= MAX_ATTEMPTS);
 
         return "0";
 

@@ -5,23 +5,35 @@ import java.util.Scanner;
 
 public class MysteryNumberGame {
 
-    private static final int MIN = 0;
-    private static final int MAX = 100;
-    private static final int USER_MAX_ATTEMPT = 7;
 
+    private static final int USER_MAX_ATTEMPT = 7;
     private final int mysteryNumber;
 
-    public MysteryNumberGame() {
+    private final int MIN;
+    private final int MAX;
+
+
+    public MysteryNumberGame(int min, int max) {
+
         Random random = new Random();
-        this.mysteryNumber = random.nextInt((MAX - MIN) + 1) + MIN;
-        this.launchGame();
+        this.MIN = min;
+        this.MAX = max;
+        this.mysteryNumber = random.nextInt((this.MAX - this.MIN) + 1) + this.MIN;
+
     }
+
+    public MysteryNumberGame() {
+        this(1, 100);
+    }
+
 
     public static void main(String[] args) {
 
-        new MysteryNumberGame();
+        MysteryNumberGame game = new MysteryNumberGame(1, 100);
+        game.launchGame();
 
     }
+
 
     private void launchGame() {
 
@@ -30,7 +42,7 @@ public class MysteryNumberGame {
 
         System.out.print("\nCherchez le nombre mystère : ");
 
-        while (userAttempt < USER_MAX_ATTEMPT) {
+        do {
 
             int userNumber = Integer.parseInt(scanner.nextLine());
 
@@ -55,11 +67,12 @@ public class MysteryNumberGame {
                 }
                 else {
                     System.out.println("Il vous reste encore " + (USER_MAX_ATTEMPT - userAttempt) + " essais...\n");
+                    System.out.print("Rejouez : ");
                 }
 
             }
 
-        }
+        } while (userAttempt < USER_MAX_ATTEMPT);
 
     }
 

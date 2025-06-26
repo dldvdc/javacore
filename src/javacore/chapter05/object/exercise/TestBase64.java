@@ -1,5 +1,6 @@
 package javacore.chapter05.object.exercise;
 import java.nio.charset.StandardCharsets;
+// import incorrect (nom de classe identique mais référence différente)
 import java.util.Base64;
 
 @SuppressWarnings("restriction")
